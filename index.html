@@ -39,4 +39,28 @@
   <iframe 
     id="youtube" 
     src="https://www.youtube.com/embed/VIDEO_ID?rel=0" 
-    allow="accelerometer; clipboard-write; encrypted-
+    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+
+  <script>
+    const overlay = document.getElementById("overlay");
+    const iframe = document.getElementById("youtube");
+
+    overlay.addEventListener("click", () => {
+      overlay.style.display = "none";
+      iframe.style.display = "block";
+
+      // Vollbild anfordern
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.webkitRequestFullscreen) { // Safari
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.msRequestFullscreen) { // IE11
+        iframe.msRequestFullscreen();
+      }
+    });
+  </script>
+
+</body>
+</html>
