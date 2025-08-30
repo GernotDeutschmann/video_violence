@@ -13,11 +13,6 @@
       justify-content: center;
       align-items: center;
     }
-    iframe {
-      max-width: 100%;
-      max-height: 100%;
-      border: none;
-    }
     #overlay {
       position: fixed;
       inset: 0;
@@ -29,28 +24,19 @@
       font-size: 2rem;
       cursor: pointer;
     }
+    iframe {
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      display: none; /* zuerst verstecken */
+    }
   </style>
 </head>
 <body>
-  <div id="overlay">Tippe/Klicke, um Video im Vollbild zu starten</div>
-  <iframe id="youtube" src="https://www.youtube.com/watch?v=qLefRPeNHkU" allowfullscreen style="display:none;"></iframe>
 
-  <script>
-    const overlay = document.getElementById("overlay");
-    const iframe = document.getElementById("youtube");
+  <div id="overlay">Klicke hier, um Video im Vollbild zu starten</div>
 
-    overlay.addEventListener("click", () => {
-      overlay.style.display = "none";
-      iframe.style.display = "block";
-      // Vollbild anfordern
-      if (iframe.requestFullscreen) {
-        iframe.requestFullscreen();
-      } else if (iframe.webkitRequestFullscreen) { /* Safari */
-        iframe.webkitRequestFullscreen();
-      } else if (iframe.msRequestFullscreen) { /* IE11 */
-        iframe.msRequestFullscreen();
-      }
-    });
-  </script>
-</body>
-</html>
+  <iframe 
+    id="youtube" 
+    src="https://www.youtube.com/embed/VIDEO_ID?rel=0" 
+    allow="accelerometer; clipboard-write; encrypted-
